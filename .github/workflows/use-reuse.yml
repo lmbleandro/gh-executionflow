@@ -69,6 +69,8 @@ jobs:
   deploy:
     needs: build
     uses: ./.github/workflows/reusable.yml
+    with:
+      artifact-name: dist-files #passando o valor dist-files para a variavel artifact para pode ser usado no outro workflow
   report:
     needs: [lint,deploy]
     if: failure()
