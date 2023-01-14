@@ -5,6 +5,9 @@ on:
       artifact-name:  
         description: The name of the deployable artifacts files
         required: false
+        type: string
+        default: dist
+        
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -12,7 +15,7 @@ jobs:
       - name: Get Code
         uses: actions/download-artifact@v3
         with:
-          name: ${{ input.artifact-name }}
+          name: ${{ inputs.artifact-name }}
       - name: List  files
         run: ls
       - name: Output Information
